@@ -3,9 +3,9 @@ A simple environmet ready for Laravel development.
 
 # How To Use It
 
-** 1 Clone it.
-** 2 Run `docker-compose up -d` on terminal.
-** 3 Enjoy.
+**1** Clone it.
+**2** Run `docker-compose up -d` on terminal.
+**3** Enjoy.
 
 # Running Ports
 
