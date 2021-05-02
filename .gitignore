@@ -1,17 +1,44 @@
-/mysql/data/
-/nginx/log/
-.DS_Store
-.idea
-/src/node_modules
-/src/public/hot
-/src/public/storage
-/src/storage/*.key
-/src/vendor
-/src/.env
-/src/.env.backup
-/src/.phpunit.result.cache
-/src/docker-compose.override.yml
-/src/Homestead.json
-/src/Homestead.yaml
-/src/npm-debug.log
-/src/yarn-error.log
+/docker-log/nginx
+/docker-config/mysql/data
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+### Laravel ###
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+storage/*.key
+.env
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+
+# Laravel IDE helper
+*.meta.*
+_ide_*

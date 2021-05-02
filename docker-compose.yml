@@ -4,13 +4,13 @@ services:
   site:
     build:
       context: .
-      dockerfile: nginx.dockerfile
+      dockerfile: ./docker-config/nginx.dockerfile
     container_name: nginx
     ports:
       - 80:80
     volumes:
-      - ./src:/var/www/html:delegated
-      - ./nginx/log:/var/log/nginx
+      - .:/var/www/html:delegated
+      - ./docker-log/nginx:/var/log/nginx
     depends_on:
       - php
       - redis
@@ -32,18 +32,18 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
-      - ./mysql/data:/var/lib/mysql
+      - ./docker-config/mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker-config/mysql/data:/var/lib/mysql
     networks:
       - laravel
 
   php:
     build:
       context: .
-      dockerfile: php.dockerfile
+      dockerfile: ./docker-config/php.dockerfile
     container_name: php
     volumes:
-      - ./src:/var/www/html:delegated
+      - .:/var/www/html:delegated
     networks:
       - laravel
 
@@ -57,10 +57,10 @@ services:
   composer:
     build:
       context: .
-      dockerfile: composer.dockerfile
+      dockerfile: ./docker-config/composer.dockerfile
     container_name: composer
     volumes:
-      - ./src:/var/www/html
+      - .:/var/www/html
     working_dir: /var/www/html
     depends_on:
       - php
@@ -73,7 +73,7 @@ services:
     image: node:13.7
     container_name: npm
     volumes:
-      - ./src:/var/www/html
+      - .:/var/www/html
     working_dir: /var/www/html
     entrypoint: ['npm']
     networks:
@@ -82,10 +82,10 @@ services:
   artisan:
     build:
       context: .
-      dockerfile: php.dockerfile
+      dockerfile: ./docker-config/php.dockerfile
     container_name: artisan
     volumes:
-      - ./src:/var/www/html:delegated
+      - .:/var/www/html:delegated
     depends_on:
       - mysql
     working_dir: /var/www/html
