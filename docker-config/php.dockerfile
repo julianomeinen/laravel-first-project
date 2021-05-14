@@ -1,7 +1,7 @@
 #FROM php:7.4-fpm-alpine
 FROM php:8.0.5-fpm-alpine
 
-ADD ./php/www.conf /usr/local/etc/php-fpm.d/
+ADD ./docker-config/php/www.conf /usr/local/etc/php-fpm.d/
 
 RUN addgroup -g 1000 laravel && adduser -G laravel -g laravel -s /bin/sh -D laravel
 
