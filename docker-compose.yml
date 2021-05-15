@@ -58,45 +58,45 @@ services:
     networks:
       - laravel
 
-  # composer:
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker-config/composer.dockerfile
-  #   container_name: composer
-  #   volumes:
-  #     - .:/var/www/html
-  #   working_dir: /var/www/html
-  #   depends_on:
-  #     - php
-  #   user: laravel
-  #   entrypoint: ['composer', '--ignore-platform-reqs']
-  #   networks:
-  #     - laravel
+  composer:
+    build:
+      context: .
+      dockerfile: ./docker-config/composer.dockerfile
+    container_name: composer
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    user: laravel
+    entrypoint: ['composer', '--ignore-platform-reqs']
+    networks:
+      - laravel
 
-  # npm:
-  #   image: node:13.7
-  #   container_name: npm
-  #   volumes:
-  #     - .:/var/www/html
-  #   working_dir: /var/www/html
-  #   entrypoint: ['npm']
-  #   networks:
-  #     - laravel
+  npm:
+    image: node:13.7
+    container_name: npm
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ['npm']
+    networks:
+      - laravel
 
-  # artisan:
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker-config/php.dockerfile
-  #   container_name: artisan
-  #   volumes:
-  #     - .:/var/www/html:delegated
-  #   depends_on:
-  #     - mysql
-  #   working_dir: /var/www/html
-  #   user: laravel
-  #   entrypoint: ['php', '/var/www/html/artisan']
-  #   networks:
-  #     - laravel
+  artisan:
+    build:
+      context: .
+      dockerfile: ./docker-config/php.dockerfile
+    container_name: artisan
+    volumes:
+      - .:/var/www/html:delegated
+    depends_on:
+      - mysql
+    working_dir: /var/www/html
+    user: laravel
+    entrypoint: ['php', '/var/www/html/artisan']
+    networks:
+      - laravel
 
   mailhog:
     image: mailhog/mailhog:latest
